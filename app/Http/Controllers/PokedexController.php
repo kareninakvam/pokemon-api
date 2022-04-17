@@ -10,11 +10,26 @@ use App\Models\Badge;
 class PokedexController extends Controller
 {
     public function index(){
-       
-        $pokemons = Pokemon::all();
-        $badges = Badge::all();
 
-        return view('home', ['pokemons' => $pokemons, 'badges' => $badges]);
+        $user = auth()->user();
+
+        if (!empty($user)){      
+
+            $userId = $user->id;
+
+            $pokemons = Pokemon::where([
+                ['user_id', $userId]
+                ])->get();
+
+            $badges = Badge::where([
+                ['user_id', $userId]
+                ])->get();
+
+            return view('home', ['pokemons' => $pokemons, 'badges' => $badges, 'user' => $user]);
+
+        } else {
+            return view('home');
+        }
     }
 
     public function create(){
@@ -34,6 +49,9 @@ class PokedexController extends Controller
          //   $requestImage->image->move(public_path('imgs/pokemons'), $imageName);
          //   $event->image=$imageName;
        // }
+        
+        $user = auth()->user();
+        $pokemon->user_id = $user->id;
 
         $pokemon-> save();
 

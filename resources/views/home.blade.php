@@ -3,8 +3,16 @@
 @section ('title', 'POKEMON')
 
 @section ('content')
+@guest
 <div class ="title">
-    <h1>Treinador: Fulano</h1>
+  <h1>Seja bem vindo!</h1>
+  <p>Venha ser um treinador pokemon! Cadastre-se agora mesmo!</p>
+</div>
+@endguest
+
+@auth
+<div class ="title">
+    <h1>Treinador: {{ $user -> name }}</h1>
 </div>
 
 <!--Lista de pokemons -->
@@ -20,10 +28,9 @@
           </div>
         </div>
     </div>
-
-    
 @endforeach
 </div>
+
 
 <!--Lista de insígnias -->
 <div class="container"><h2> Sua lista de insígnias: </h2></div>
@@ -39,7 +46,7 @@
             <button type="submit" class="btn btn-light" name="trash-outline">Excluir</button>
         </form>
   </div>
-
   @endforeach
+  @endauth
 </div>
 @endsection

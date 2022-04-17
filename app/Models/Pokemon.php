@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Pokemon extends Model
 {
     use HasFactory;
+
     protected $table = 'pokemons';
+
     protected $guarded = [];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

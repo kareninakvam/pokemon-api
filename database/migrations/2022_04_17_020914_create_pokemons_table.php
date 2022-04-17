@@ -17,7 +17,8 @@ class CreatePokemonsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('info_pokemon'); 
+            $table->string('info_pokemon');
+            $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -29,5 +30,9 @@ class CreatePokemonsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('pokemons');
+        
+        $table->foreignId('user_id')
+        ->constrained()
+        ->onDelete('cascade');
     }
 }

@@ -27,6 +27,18 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
+            @guest
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Registrar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mudar senha</a>
+            </li>
+            @endguest
+            @auth
             <li class="nav-item active">
               <a class="nav-link" href="/">Home</a>
             </li>
@@ -46,6 +58,7 @@
                 </a>
               </form>
             </li>
+            @endauth
           </ul>
         </div>
       </nav>

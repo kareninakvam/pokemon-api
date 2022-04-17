@@ -9,7 +9,7 @@ use App\Http\Controllers\BadgesController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Aqui estão todas as rotas! <3
+| Aqui estão todas as rotas do sistema! <3
 |
 */
 
@@ -17,27 +17,44 @@ Route::get('/', [PokedexController::class, 'index']);
 
 //ROTAS POKEMON
 
-Route::get('/pokemons/cadastrar', [PokedexController::class, 'create']);
+Route::get('/pokemons/cadastrar', [PokedexController::class, 'create'])->middleware('auth');
 
-Route::post('/pokemons', [PokedexController::class, 'store']);
+Route::post('/pokemons', [PokedexController::class, 'store'])->middleware('auth');
 
-Route::get('/pokemons/{id}', [PokedexController::class, 'show']);
+Route::get('/pokemons/{id}', [PokedexController::class, 'show'])->middleware('auth');
 
-Route::delete ('/pokemons/{id}',[PokedexController::class, 'destroy']);
+Route::delete ('/pokemons/{id}',[PokedexController::class, 'destroy'])->middleware('auth');
 
-Route::get('/pokemons/edit/{id}',[PokedexController::class, 'edit']);
+Route::get('/pokemons/edit/{id}',[PokedexController::class, 'edit'])->middleware('auth');
 
-Route::put('/pokemons/update/{id}',[PokedexController::class, 'update']);
+Route::put('/pokemons/update/{id}',[PokedexController::class, 'update'])->middleware('auth');
 
 
 //ROTAS INSIGNIAS
 
-Route::get('/insignias/cadastrar', [BadgesController::class, 'create']);
+Route::get('/insignias/cadastrar', [BadgesController::class, 'create'])->middleware('auth');
 
-Route::post('/insignias', [BadgesController::class, 'store']);
 
-Route::delete ('/insignias/{id}',[BadgesController::class, 'destroy']);
+Route::post('/insignias', [BadgesController::class, 'store'])->middleware('auth');
 
-Route::get('/insignias/edit/{id}',[BadgesController::class, 'edit']);
 
-Route::put('/insignias/update/{id}',[BadgesController::class, 'update']);
+Route::delete ('/insignias/{id}',[BadgesController::class, 'destroy'])->middleware('auth');
+
+
+Route::get('/insignias/edit/{id}',[BadgesController::class, 'edit'])->middleware('auth');
+
+
+Route::put('/insignias/update/{id}',[BadgesController::class, 'update'])->middleware('auth');
+
+
+
+//ROTA LOGIN, AUTENTICAÇÃO
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return redirect('/');
+    })->name('dashboard');
+});

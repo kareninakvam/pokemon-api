@@ -18,6 +18,7 @@ class CreateBadgesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('info_battle');
+            $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -29,5 +30,9 @@ class CreateBadgesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('badges');
+        
+        $table->foreignId('user_id')
+        ->constrained()
+        ->onDelete('cascade');
     }
 }

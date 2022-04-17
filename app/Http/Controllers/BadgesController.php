@@ -18,6 +18,9 @@ class BadgesController extends Controller
         $badge->name = $request->name;
         $badge->info_battle = $request->info_battle;
 
+        $user = auth()->user();
+        $badge->user_id = $user->id;
+
         $badge-> save();
 
         return redirect ('/');
