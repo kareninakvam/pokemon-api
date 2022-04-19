@@ -15,5 +15,32 @@
 	Status:  🚀 Finalizado. Porém muito provavelmente em breve será atualizado.
 </h4>
 
-![layout-homepage](https://postimg.cc/sBqvV8nw)
 
+![Screenshot_4](https://user-images.githubusercontent.com/91031302/164068538-52cb6d36-44ee-46e4-9cd4-6de93fc71436.png)
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Laravel](https://laravel.com/) e de um servidor local para fazer a conexão com o banco de dados. Caso esteja instalado o [WampServer](https://www.wampserver.com/en/), e ele estiver instalado com o MySQL, irá facilitar o uso. 
+
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
+
+### 🎲 Rodando o Back End (servidor)
+
+```bash
+
+
+# Crie um nova base de dados em seu banco, chamada Pokemon. 
+
+# Clone este repositório
+$ git clone <https://github.com/kareninakvam/pokemon-api>
+
+# Crie um arquivo .env na raiz do projeto, configurando o mesmo com o mesmo nome do seu banco. No caso, Pokemon. 
+
+
+# No terminal, na pasta raiz da aplicação, digite o seguinte comando: php artisan serve
+
+# Para que as tabelas sejam criadas em seu banco, digite o comando:  php artisan migrate
+
+# O servidor será iniciado e você podera acessar a aplicação pelo link: http://127.0.0.1:8000/
+```
