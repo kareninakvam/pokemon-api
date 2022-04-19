@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PokedexController;
 use App\Http\Controllers\BadgesController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,10 @@ Route::middleware([
         return redirect('/');
     })->name('dashboard');
 });
+
+
+// ROTA PARA EDITAR O PERFIL DE USUÁRIO 
+
+Route::get('/perfil/edit/',[UserController::class, 'edit'])->middleware('auth');
+
+Route::put('/perfil/edit/{id}',[UserController::class, 'update'])->middleware('auth');

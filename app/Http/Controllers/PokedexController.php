@@ -41,14 +41,6 @@ class PokedexController extends Controller
         $pokemon = new Pokemon;
         $pokemon->name = $request->name;
         $pokemon->info_pokemon = $request->info_pokemon;
-
-        //if ($request->hasFile('image') && $request->file('image')->isValid()){
-        //    $requestImage = $request->image;
-        //    $extension = $requestImage->extension();
-         //   $imageName = md5($requestImage->getClientOriginalName() . strtotime("now"))  . "." . $extension;
-         //   $requestImage->image->move(public_path('imgs/pokemons'), $imageName);
-         //   $event->image=$imageName;
-       // }
         
         $user = auth()->user();
         $pokemon->user_id = $user->id;

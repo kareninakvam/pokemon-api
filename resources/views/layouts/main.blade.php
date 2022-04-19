@@ -34,9 +34,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/register">Registrar</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Mudar senha</a>
-            </li>
             @endguest
             @auth
             <li class="nav-item active">
@@ -47,6 +44,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/insignias/cadastrar">Adicionar Insígnias</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/perfil/edit/">Alterar dados</a>
             </li>
             <li class="nav-item">
               <form action="/logout" method="POST">
