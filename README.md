@@ -15,4 +15,5 @@
 	Status:  🚀 Finalizado. Porém muito provavelmente em breve será atualizado.
 </h4>
 
+![layout-homepage](https://postimg.cc/sBqvV8nw)
 
